@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
+import "react-progress-2/main.css";
+import Progress from "react-progress-2";
 import {
     ButtonGroup,
     Button,
@@ -40,6 +42,7 @@ class App extends Component {
 	    model : '',
 	    year: '',
 	    raw : '',
+	    modelYear: '',
         }
     }
 
@@ -85,18 +88,26 @@ class App extends Component {
         const target = event.target;
         const value = target.type === 'file' ? event.target.files[0] : target.value;
         const name = target.name;
+	if(target.type === 'file'){
+		this.setState({model : '',
+            year: '',
+            raw : '',
+            modelYear: ''});
+	}
         this.setState({
             [name]: value, error: ""
         });
     };
 
     onUpload = async () => {
+	Progress.show();
         try {
             const result = await restClient.uploadFile(this.state.file, this.state.title, this.state.details);
-console.log(result);
-		this.setState({model: result.model, year: result.year, raw: result.raw});
-            //if (!result) this.displayTheError('No user found');
+	    console.log(result);
+	    this.setState({model: result.model, year: result.year, raw: result.raw, modelYear: result.size});
+	    Progress.hide();
         } catch (e) {
+	    Progress.hide();
             await this.toggleErrorAsync(e.message);
             return;
         }
@@ -119,6 +130,7 @@ console.log(result);
     render() {
         return (
             <div className="App">
+		<Progress.Component/>
                 <Container>
                     <Row>
                         <Col>
@@ -154,20 +166,27 @@ console.log(result);
                     </Row>
 			<Row>
 <Col>
+	<FormGroup row>
+                                <Label sm={2}>ModelYear</Label>
+                                <Col sm={10}>
+                                   <label>{this.state.modelYear}</label>
+                                </Col>
+                            </FormGroup>
+
                         <FormGroup row>
-                                <Label for="file" sm={2}>Model</Label>
+                                <Label sm={2}>Model</Label>
                                 <Col sm={10}>
                                    <label>{this.state.model}</label>
                                 </Col>
                             </FormGroup>
 <FormGroup row>
-                                <Label for="file" sm={2}>Year</Label>
+                                <Label sm={2}>Year</Label>
                                 <Col sm={10}>
                                     <label>{this.state.year}</label>
                                 </Col>
                             </FormGroup>
 <FormGroup row>
-                                <Label for="file" sm={2}>Raw Text</Label>
+                                <Label sm={2}>Raw Text</Label>
                                 <Col sm={10}>
                                     <label>{this.state.raw}</label>
                                 </Col>

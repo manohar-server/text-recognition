@@ -25,7 +25,7 @@ export default {
             .then(handleErrors);
     },*/
     uploadFile: (file, title, details) => {
-        const url = 'http://localhost:8080/api/uploadFile';
+        const url = 'http://3.16.166.161:8080/api/uploadFile';
         const formData = new FormData();
         formData.append('file', file);
         formData.append('title', title);

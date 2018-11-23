@@ -36,9 +36,7 @@ public class AuthController {
 		{
 			instance.setLanguage("eng");
 			instance.setDatapath("/usr/share/tesseract-ocr/4.00/tessdata/");
-
 			String imgText = instance.doOCR(new File(imageLocation));
-			
 			return imgText;
 
 		}
@@ -66,23 +64,30 @@ public class AuthController {
 
 		String text = getImgText(fileName);
 		String[] lines = text.split(System.getProperty("line.separator"));
-		String model = "Not Found";
-		String year = "Not Found";
+		String model = "Not Found, Plz Select High Resolution Image";
+		String year = "Not Found, Plz Selecte Hight Resolution Image";
+		String modelAndYear = "Not Found, Plz Selecte Hight Resolution Image";
 		for (int i = 0; i < lines.length; i ++) {
 			if(lines[i].startsWith("Model")) {
-				String modelAndYear = lines[i].substring(lines[i].lastIndexOf(" "));
+				modelAndYear = lines[i].substring(lines[i].lastIndexOf(" "));
 				String tokens[] = modelAndYear.split("/");
 				if(tokens.length == 2) {
 					model = tokens[0];
 					year = tokens[1];
 				} else {
-					model = modelAndYear;
+					tokens = modelAndYear.split("I");
+					if(tokens.length == 2) {
+                                        	model = tokens[0];
+                                        	year = tokens[1];
+                                	} else{
+						model = modelAndYear;
+					}
 				}
 				break;
 			}
 			System.out.println(lines[i]);
 		}
-		return new UploadFileResponse(model, year, text, Long.toString(file.getSize()));
+		return new UploadFileResponse(model, year, text, modelAndYear);
 		
 	}
 

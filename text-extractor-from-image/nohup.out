@@ -1,0 +1,94 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.0.RELEASE)
+
+14:46:10.966 [main] INFO  c.s.i.t.TextExtractorFromImageApplication - Starting TextExtractorFromImageApplication v0.0.1-SNAPSHOT on ip-172-31-37-96 with PID 7012 (/opt/text-recognition/text-extractor-from-image/target/text-extractor-from-image-0.0.1-SNAPSHOT.jar started by root in /opt/text-recognition/text-extractor-from-image)
+14:46:10.986 [main] INFO  c.s.i.t.TextExtractorFromImageApplication - No active profile set, falling back to default profiles: default
+14:46:14.510 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+14:46:14.551 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+14:46:14.579 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+14:46:14.580 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/9.0.12
+14:46:14.605 [main] INFO  o.a.c.core.AprLifecycleListener - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+14:46:14.804 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:46:14.804 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3629 ms
+14:46:14.813 [main] INFO  c.s.i.t.uitl.SimpleCORSFilter - SimpleCORSFilter init
+14:46:14.868 [main] INFO  o.s.b.w.s.ServletRegistrationBean - Servlet dispatcherServlet mapped to [/]
+14:46:14.888 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+14:46:14.888 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+14:46:14.888 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'formContentFilter' to: [/*]
+14:46:14.888 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+14:46:14.889 [main] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'simpleCORSFilter' to: [/*]
+14:46:15.471 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+14:46:15.930 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+14:46:15.945 [main] INFO  o.a.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+14:46:15.995 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+14:46:16.002 [main] INFO  c.s.i.t.TextExtractorFromImageApplication - Started TextExtractorFromImageApplication in 6.268 seconds (JVM running for 7.513)
+14:46:52.256 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+14:46:52.256 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+14:46:52.274 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 18 ms
+MORE STARS %
+MORE SAVINGS
+g
+ISEER - 3.45*
+Rpplancelype  CRACISIR
+Brand DAKIN
+MORE STARS %
+MORE SAVINGS
+g
+ISEER - 3.45*
+Rpplancelype  CRACISIR
+Brand DAKIN
+ABCDE
+FGH I J
+KLMNO
+PQRST
+o HAGO.ME Su dung ma so Hago.me sau: 2679
+Verification Code
+Please type the verification code sent
+to +84 79 2003077
+It may take up to 3 minutes to arrive.
+\
+MORE SAVINGS l
+POWER SAVINGS |}
+GUIDE |
+189*
+Appliance Rofrigorator
+Brand :LG
+MORE STARS %
+MORE SAVINGS
+g
+ISEER - 3.45*
+Rpplancelype  CRACISIR
+Brand DAKIN
+MORE STARS %
+MORE SAVINGS
+g
+ISEER - 3.45*
+Rpplancelype  CRACISIR
+Brand DAKIN
+contains_unichar_id(unichar_id):Error:Assert failed:in file ../ccutil/unicharset.h, line 513
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f9f8a58a69b, pid=7012, tid=0x00007f9f8c21f700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_181-b13) (build 1.8.0_181-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.181-b13 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libtesseract.so.4.0.0+0x25969b]  ERRCODE::error(char const*, TessErrorLogCode, char const*, ...) const+0x16b
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# An error report file with more information is saved as:
+# /opt/text-recognition/text-extractor-from-image/hs_err_pid7012.log
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
