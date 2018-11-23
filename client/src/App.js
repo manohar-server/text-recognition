@@ -15,8 +15,11 @@ import {
     Row
 } from 'reactstrap';
 import restClient from "./restClient";
+import "react-progress-2/main.css";
+import Progress from "react-progress-2";
 import MetadataListView from "./MetadataListView";
-
+//import { tesseract } from 'node-tesseract';
+const fs = require('fs');
 const pageSize = 10;
 const initMetaDataPaged = {
     content: [],
@@ -40,6 +43,7 @@ class App extends Component {
 	    model : '',
 	    year: '',
 	    raw : '',
+	    modelYear: ''
         }
     }
 
@@ -91,16 +95,26 @@ class App extends Component {
     };
 
     onUpload = async () => {
+	Progress.show();
         try {
-            const result = await restClient.uploadFile(this.state.file, this.state.title, this.state.details);
-console.log(result);
-		this.setState({model: result.model, year: result.year, raw: result.raw});
-            //if (!result) this.displayTheError('No user found');
+            	const result = await restClient.uploadFile(this.state.file, this.state.title, this.state.details);
+		console.log(result);
+		this.setState({model: result.model, year: result.year, raw: result.raw, modelYear: result.modelYear});
+            Progress.hide();
         } catch (e) {
+	    Progress.hide();
             await this.toggleErrorAsync(e.message);
             return;
         }
         //await this.fetchMetadata(0, pageSize);
+	/*tesseract.process(args[0], function(err, text) {
+	    if(err) {
+		console.error(err);
+	    } else {
+		console.log(text);
+	    }
+	}); */
+	
     }
     getMetadataColumns = () => {
         const keysArr = this.state.metaDataPaged.content.map(e => Object.keys(e));
@@ -119,6 +133,7 @@ console.log(result);
     render() {
         return (
             <div className="App">
+		<Progress.Component/>
                 <Container>
                     <Row>
                         <Col>
@@ -135,7 +150,7 @@ console.log(result);
                                            onChange={this.handleInputChange}
                                            valid={true}/>
                                 </Col>
-                            </FormGroup>                           
+                            </FormGroup>
                         </Col>
 
                     </Row>
@@ -154,20 +169,26 @@ console.log(result);
                     </Row>
 			<Row>
 <Col>
+<FormGroup row>
+                                <Label sm={2}>Model|Year</Label>
+                                <Col sm={10}>
+                                   <label>{this.state.modelYear}</label>
+                                </Col>
+                            </FormGroup>
                         <FormGroup row>
-                                <Label for="file" sm={2}>Model</Label>
+                                <Label sm={2}>Model</Label>
                                 <Col sm={10}>
                                    <label>{this.state.model}</label>
                                 </Col>
                             </FormGroup>
 <FormGroup row>
-                                <Label for="file" sm={2}>Year</Label>
+                                <Label  sm={2}>Year</Label>
                                 <Col sm={10}>
                                     <label>{this.state.year}</label>
                                 </Col>
                             </FormGroup>
 <FormGroup row>
-                                <Label for="file" sm={2}>Raw Text</Label>
+                                <Label sm={2}>Raw Text</Label>
                                 <Col sm={10}>
                                     <label>{this.state.raw}</label>
                                 </Col>
